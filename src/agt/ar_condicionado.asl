@@ -1,5 +1,3 @@
-// Agent gui in project aula10
-
 /* Initial beliefs and rules */
 
 temperatura_de_preferencia(jonas,25).
@@ -34,6 +32,8 @@ temperatura_de_preferencia(jonas,25).
  		.print("Temperatura: ", TAC).
  		
  		
+ //situação em que a temperatura ambiente (TA) é diferente da temperatura do ar condicionado
+ //(TAC) e o ar condicionado está desligado
  +!climatizar: temperatura_ambiente(TA) & temperatura_ac(TAC) & TA \== TAC & ligado(false)
  	<-   ligar;
  		.print("Ligando ar condicionado...");
@@ -42,11 +42,15 @@ temperatura_de_preferencia(jonas,25).
  		.wait(1000);
  		!!climatizar.
  		
+// situação em que o ar condicionado está ligado e as temperaturas ainda não
+// foram igualadas (TA == TAC)
  +!climatizar: temperatura_ambiente(TA) & temperatura_ac(TAC) & TA \== TAC & ligado(true) 
  	<-  .print("Aguardando regular a temperatura de ", TA, " para ", TAC, "...");
  		.wait(4000);
  		!!climatizar.
  		 	
+// temperatura ambiente já está igual à temperatura do ar condicionado (TA == TAC) e o ar
+// condicionado está ligado
   +!climatizar: temperatura_ambiente(TA) & temperatura_ac(TAC) & TA == TAC & ligado(true) 
  	<-   desligar;
  		.print("Desligando ar condicionado...");
@@ -57,4 +61,8 @@ temperatura_de_preferencia(jonas,25).
  	<- 	.print("Não foram implementadas outras opções.");
  		.print("Temperatura regulada.").
 
-
++auto_climatizar(P): temperatura_ambiente(TA) & temperatura_de_preferencia(_, TP) & TA \== TP & ligado(false)
+	<- ligar;
+	.print(P, " está em casa, climatizando o ambiente.");
+	.wait(1);
+ 	!!climatizar.

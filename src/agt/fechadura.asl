@@ -1,6 +1,7 @@
-
+/* Initial beliefs and rules */
 !inicializar_fechadura.
 
+/* Initial goals */
 +!inicializar_fechadura
   <- 	makeArtifact("fechadura_quarto","artifacts.Fechadura",[],D);
   	   	focus(D);
@@ -8,6 +9,8 @@
   	   	
 +movimento_macaneta <- !verificar_fechada.
 
+
+//Combinações de verificar porta 
 +!verificar_fechada: trancada(true) 
   <-  .print("Alguém mexeu na MAÇANETA, porém a porta está trancada!").
 +!verificar_fechada: fechada(true)
@@ -17,6 +20,7 @@
   
 +movimento_fechadura <- !verificar_trancada.
 
+//Condições de verificar a tanca 
 +!verificar_trancada: trancada(true)
   <-  .print("Alguém mexeu na FECHADURA e TRANCOU a porta!").
 +!verificar_trancada: trancada(false)
@@ -40,3 +44,8 @@
  	<- 	trancar;
  		.print("TRANQUEI a porta!");
  		!trancar_porta.
+
++!destrancar_porta: trancada(true)
+  <- destrancar;
+     .print("Porta destrancada por solicitação do agente camera!");
+	 !verificar_trancada.
