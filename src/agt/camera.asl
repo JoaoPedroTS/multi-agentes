@@ -11,13 +11,15 @@
       
 +closed  <-  .print("Close event from GUIInterface").
 
-+!verificar_pessoa: pessoa_presente(P) & local("entrada")
++!verificar_pessoa: pessoa_presente("Jonas") & local("entrada")
  	<-  .print("Proprietario reconhecida no local entrada");
   !!liberar_acesso(P,L).
 
 +!verificar_pessoa: pessoa_presente(P) & local("saida")
  	<-  .print("Pessoa: ", P, " reconhecida no local saída");
   !!saida(P,L).
+
++!verificar_pessoa <- .print("Ultimo plano").
    
 +!liberar_acesso(P,L): acessou_entrada(P, L) 
   <- .send(fechadura, achieve, destrancar_porta);
