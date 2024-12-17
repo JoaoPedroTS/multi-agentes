@@ -4,7 +4,7 @@ temperatura_de_preferencia(jonas,25).
 
 /* Initial goals */
 
-!inicializar_AC.
+//!inicializar_AC.
 
 +!inicializar_AC
   <- 	makeArtifact("ac_quarto","artifacts.ArCondicionado",[],D);

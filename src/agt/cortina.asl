@@ -1,6 +1,6 @@
 configuracao_proprietario(50).
 
-!inicializar_cortina.
+//!inicializar_cortina.
 
 +!inicializar_cortina
   <- 	makeArtifact("cortina_quarto","artifacts.Cortina",[],D);

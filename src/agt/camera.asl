@@ -1,6 +1,6 @@
 // Objetivo
 // ! indica um objetico que o agente deseja alcançar
-!inicializar_camera.
+//!inicializar_camera.
 
 +!inicializar_camera
   <- 	makeArtifact("camera_quarto","artifacts.Camera",[],D);
@@ -27,7 +27,7 @@
   .send(cortina, achieve, ajustar_abertura(P));
   .send(lampada, achieve, ligar_lampada).
 
-+!saida(P,L): acessou_saida(P,L)
++!saida(P,L)
   <- .print(P, " saiu de casa");
       .send(fechadura, achieve, fechar_porta);
       .send(cortina, achieve, fechar_cortinas);

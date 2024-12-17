@@ -149,9 +149,5 @@ public class Fechadura extends GUIArtifact {
 			panel.add(fechaduraButton);
 				
 		}
-	}
-
-		
+	}		
 }
-
-

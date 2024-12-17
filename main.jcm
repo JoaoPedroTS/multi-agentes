@@ -20,9 +20,10 @@ mas main {
     agent cortina: cortina.asl
     agent lampada: lampada.asl
     agent fechadura: fechadura.asl
-
+    // Implementação do agente cafeteira
+    agent cafeteira: cafeteira.asl
 
     workspace w {
-      artifact c1: example.Counter(3) 
+      artifact c1: example.Counter(3)
     }
 }

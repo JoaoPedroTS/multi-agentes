@@ -99,6 +99,4 @@ public class Lampada extends GUIArtifact{
 			
 		}
 	}
-
-
 }

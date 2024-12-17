@@ -1,4 +1,3 @@
-
 !inicializar_lampada.
 
 +!inicializar_lampada

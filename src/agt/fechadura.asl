@@ -1,5 +1,5 @@
 /* Initial beliefs and rules */
-!inicializar_fechadura.
+//!inicializar_fechadura.
 
 /* Initial goals */
 +!inicializar_fechadura

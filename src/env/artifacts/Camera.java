@@ -163,8 +163,3 @@ class InterfaceAC extends JFrame {
 	}
 	
 }
-
-	
-
-    
-

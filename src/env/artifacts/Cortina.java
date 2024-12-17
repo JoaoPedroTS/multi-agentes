@@ -123,5 +123,3 @@ class InterfaceCortina extends JFrame {
 }
 	
 }
-
-
