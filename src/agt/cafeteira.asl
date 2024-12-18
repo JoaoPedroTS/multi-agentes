@@ -1,44 +1,35 @@
-
-!inicializar_cafeteira.
-
-+!inicializar_cafeteira
-  <-  makeArtifact("cafeteira","artifacts.Cafeteira",[],D);
-      focus(D).
-      !ligar_cafeteira.
-
-+interuptor
-  <- !!verificar_cafeteira.
-
-+bip <- .print("cafeteira bipou").
+estoque(5, 5).
+requisitos(1, 1).
       
-+cafe_pronto 
-  <-  .print("Café pronto! Aproveite!").
++!consultar_estoque: estoque(A, C)
+  <-  .print("Consultar estoque de agua: ", A);
+      .print("Consultar estoque de po de café: ", C);
+      !consultar_requisitos.
 
-+!ligar_cafeteira
-  <- .print("Cafeteira ligada").
-
-+!verificar_cafeteira: ligada(true)
-  <- .print("Alguem desligou a cafeteira").
++!atualizar_estoque: estoque(A, C) & requisitos(X, Y)
+  <-  -estoque(A, C);
+      +estoque(A-X, C-Y);
+      .print("Atualizando estoque");
+      .print("Quantidade restande de agua: ", (A-X));
+      .print("Quantidade restande de cafe: ", (C-Y)).
       
-// +!preparar_cafe: ligada & agua_disponivel & cafe_disponivel
-//   <-  .print("Iniciando o preparo do café...");
-//       .send(cafeteira, achieve, iniciar_preparo);
-//       .wait(5000);  % Aguarda 5 segundos simulando o preparo
-//       !!finalizar_preparo.
++!consultar_requisitos: requisitos(A, C)
+  <-  .print("Quantidade minima de agua: ", A);
+      .print("Quantidade minima de cafe: ", C);
+      !fazer_cafe.
 
-// +!preparar_cafe: not ligada
-//   <-  .print("A cafeteira está desligada. Por favor, ligue-a antes de preparar o café.").
++!fazer_cafe: estoque(A, C) & requisitos(X, Y) & A>X & C>Y
+  <-  .print("Quantidades suficientes");
+      .print("Preparando café ...");      
+      .wait(1000);
+      .print("Café pronto");
+      !atualizar_estoque.
 
-// +!preparar_cafe: not agua_disponivel
-//   <-  .print("Não há água suficiente para preparar o café. Reabasteça.").
++!fazer_cafe: estoque(A, C) & requisitos(X, Y) & A<X
+  <-  .print("Quantidade de agua insuficiente").
 
-// +!preparar_cafe: not cafe_disponivel
-//   <-  .print("Não há pó de café disponível. Por favor, adicione mais.").
++!fazer_cafe: estoque(A, C) & requisitos(X, Y) & C<Y
+  <-  .print("Quantidade de cafe insuficiente").
 
-// +!finalizar_preparo
-//   <-  .print("O preparo do café foi concluído.");
-//       .send(cafeteira, tell, parar_preparo);
-//       !!notificar_usuario.
-
-// +!notificar_usuario
-//   <-  .send(interface, tell, cafe_pronto).
++!fazer_cafe: estoque(A, C) & requisitos(X, Y) & A<X & C<Y
+  <-  .print("Estoque insuficiente").

@@ -21,7 +21,7 @@ public class Cafeteira extends GUIArtifact {
     private int poDeCafe = 0;      // Em gramas
     private String estado = "desligada"; // Estado inicial
 
-    public void init() {
+    public void setup() {
         cafeteira_model.setOn(false);
         defineObsProperty("ligada", cafeteira_model.isOn());
         // defineObsProperty("agua", agua);
@@ -30,7 +30,7 @@ public class Cafeteira extends GUIArtifact {
         create_frame();
     }
     
-    public void init(boolean ligada) {
+    public void setup(boolean ligada) {
         cafeteira_model.setOn(ligada);
         defineObsProperty("ligada", cafeteira_model.isOn());
         // defineObsProperty("agua", agua);

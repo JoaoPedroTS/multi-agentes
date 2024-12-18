@@ -1,4 +1,4 @@
-!inicializar_lampada.
+//!inicializar_lampada.
 
 +!inicializar_lampada
   <- 	makeArtifact("lampada_quarto","artifacts.Lampada",[],D);
